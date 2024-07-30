@@ -36,6 +36,26 @@ class ListViewController: UIViewController, UITableViewDataSource {
         
         return cell
     }
+    
+    func tableViewCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> Horoscope? {
+                
+        let horoscope = horoscopeList[indexPath.row]
+        return horoscope
+        //return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let viewController = segue.destination as! DetailViewController
+        //let indexPath = tableView.indexPathForSelectedRow!
+        //viewController.horoscope = horoscopeList[indexPath.row]
+        
+        viewController.horoscope = tableViewCell(tableView, cellForRowAt: tableView.indexPathForSelectedRow!)
+        
+        
+        print(sender!.self)
+        
+        
+    }
 
 }
 

@@ -13,10 +13,19 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var datesLabel: UILabel!
     
+    
+    var horoscope :Horoscope? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        if let horoscope = horoscope {
+            nameLabel.text = horoscope.name
+            logoImageView.image = horoscope.logo
+            datesLabel.text = horoscope.dates
+        }
     }
     
 
