@@ -144,7 +144,14 @@
                             <constraint firstItem="Aky-og-1r2" firstAttribute="trailing" secondItem="tdD-QT-dFB" secondAttribute="trailing" id="aR0-M6-tyT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Detalle" id="A6e-VD-evL"/>
+                    <navigationItem key="navigationItem" title="Detalle" id="A6e-VD-evL">
+                        <barButtonItem key="rightBarButtonItem" title="Favorito" image="suit.heart" catalog="system" id="JKp-it-BYK">
+                            <color key="tintColor" systemColor="systemRedColor"/>
+                            <connections>
+                                <action selector="setFavorite:" destination="76b-gu-8hJ" id="kLp-zk-DI5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="datesLabel" destination="ip7-yg-Ckf" id="tEC-Ex-6kF"/>
                         <outlet property="logoImageView" destination="8Hb-pM-9P7" id="qTc-rN-Xzd"/>
@@ -175,8 +182,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="suit.heart" catalog="system" width="128" height="107"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -16,6 +16,8 @@ class DetailViewController: UIViewController {
     
     var horoscope :Horoscope? = nil
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,7 +30,12 @@ class DetailViewController: UIViewController {
         }
     }
     
-
+    @IBAction func setFavorite(_ sender: Any) {
+        
+        //print("He pulsado el menu corazon")
+        let isFavorite = defaults.string(forKey: "FAVORITE_HOROSCOPE") == horoscope?.id ?? ""
+    }
+    
     /*
     // MARK: - Navigation
 
