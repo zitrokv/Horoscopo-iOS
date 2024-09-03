@@ -39,7 +39,7 @@ class HoroscopeProvider {
     
     static func getHoroscopeLuck(horoscopeId: String) async throws -> String {
         var result: String
-        let url = URL(string: "https://horoscope-api.vercel.app/api/v1/get-horoscope/daily?sign=\(horoscopeId)&day=TODAY")
+        let url = URL(string: "https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=\(horoscopeId)&day=TODAY")
         
         guard let url = url else {
             throw RuntimeError("No url provided")
