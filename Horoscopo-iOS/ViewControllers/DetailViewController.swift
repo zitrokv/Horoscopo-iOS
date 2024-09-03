@@ -55,7 +55,7 @@ class DetailViewController: UIViewController {
             do{
                 let luck = try await HoroscopeProvider.getHoroscopeLuck(horoscopeId : horoscope!.id)
                 
-                descriptionTextView.text = luck.toupper()
+                descriptionTextView.text = luck
                 
             }catch{
                 print(error)
