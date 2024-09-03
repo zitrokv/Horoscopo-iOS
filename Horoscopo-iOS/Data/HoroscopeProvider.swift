@@ -51,6 +51,12 @@ class HoroscopeProvider {
             throw RuntimeError("JSON parse exception")
         }
         
+        
+        print(data)
+        print(json)
+        print( (json["data"] as? [String:String]) ?? "" )
+        print( (json["data"] as? [String: String])?["horoscope_data"] ?? "")
+        
         let jsonData = json["data"] as? [String: String]
         
         result = jsonData?["horoscope_data"] ?? ""
