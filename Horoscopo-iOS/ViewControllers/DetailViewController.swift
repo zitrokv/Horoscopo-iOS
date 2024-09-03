@@ -13,8 +13,13 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var datesLabel: UILabel!
     
+    @IBOutlet weak var favoriteButtonItem: UIBarButtonItem!
+    
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     var horoscope :Horoscope? = nil
+    var horoscopeIndex : Int = -1
+    var isFavorite:Bool = false
     
     let defaults = UserDefaults.standard
     
@@ -28,14 +33,59 @@ class DetailViewController: UIViewController {
             logoImageView.image = horoscope.logo
             datesLabel.text = horoscope.dates
         }
+        
+        loadData()
+    }
+    
+    func loadData(){
+        isFavorite = (horoscope?.id == UserDefaults.standard.string(forKey: "FAVORITE_HOROSCOPE") ?? "" )
+        
+        setFavoriteButtonItem()
+        
+        self.navigationItem.title = horoscope?.name
+        nameLabel.text = horoscope?.name
+        logoImageView.image = horoscope?.logo
+        
+        getHoroscopeLuck()
+    }
+    
+    func getHoroscopeLuck()
+    {
+        Task{
+            do{
+                let luck = try await HoroscopeProvider.getHoroscopeLuck(horoscopeId : horoscope!.id)
+                
+                descriptionTextView.text = luck.toupper()
+                
+            }catch{
+                print(error)
+            }
+        }
+        
     }
     
     @IBAction func setFavorite(_ sender: Any) {
         
         //print("He pulsado el menu corazon")
-        let isFavorite = defaults.string(forKey: "FAVORITE_HOROSCOPE") == horoscope?.id ?? ""
+        //let isFavorite = defaults.string(forKey: "FAVORITE_HOROSCOPE") == horoscope?.id ?? ""
+        isFavorite = !isFavorite
+        
+        if(isFavorite){
+            UserDefaults.standard.setValue(horoscope?.id, forKey: "FAVORITE_HOROSCOPE")
+        }else{
+            UserDefaults.standard.setValue("", forKey: "FAVORITE_HOROSCOPE")
+        }
+        
+        setFavoriteButtonItem()
     }
     
+    func setFavoriteButtonItem(){
+        if(isFavorite){
+            favoriteButtonItem.image = UIImage(systemName: "heart.fill")
+        }else{
+            favoriteButtonItem.image = UIImage(systemName: "heart")
+        }
+    }
     /*
     // MARK: - Navigation
 

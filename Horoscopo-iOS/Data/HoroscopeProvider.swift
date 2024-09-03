@@ -29,4 +29,42 @@ class HoroscopeProvider {
         return list
     }
     
+    static func getHoroscope(id:String) -> Horoscope {
+        return getAllHoroscopes().filter {$0.id == id}.first!
+    }
+    
+    static func getIndexOf(horoscope: Horoscope) -> Int {
+        return getAllHoroscopes().firstIndex(where: {$0.id == horoscope.id})!
+    }
+    
+    static func getHoroscopeLuck(horoscopeId: String) async throws -> String {
+        var result: String
+        let url = URL(string: "https://horoscope-api.vercel.app/api/v1/get-horoscope/daily?sign=\(horoscopeId)&day=TODAY")
+        
+        guard let url = url else {
+            throw RuntimeError("No url provided")
+        }
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        guard let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+            throw RuntimeError("JSON parse exception")
+        }
+        
+        let jsonData = json["data"] as? [String: String]
+        
+        result = jsonData?["horoscope_data"] ?? ""
+        
+        return result
+                                                        
+    }
+    
+    struct RuntimeError : Error {
+        let description: String
+        
+        init(_ description: String) {
+            self.description = description
+        }
+    }
+    
 }

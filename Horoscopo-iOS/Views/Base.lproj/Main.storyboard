@@ -53,11 +53,16 @@
                                                     <color key="shadowColor" red="0.78066664934158325" green="0.081240303814411163" blue="0.37345385551452637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <size key="shadowOffset" width="1" height="1"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NEm-j8-mig">
+                                                    <rect key="frame" x="327" y="63" width="21" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.98084241151809692" green="0.95923227071762085" blue="0.93759411573410034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="datesLabel" destination="P6I-iD-0lX" id="7pn-B0-6GF"/>
+                                            <outlet property="favoriteImageView" destination="NEm-j8-mig" id="scU-3u-quh"/>
                                             <outlet property="logoImageView" destination="xTQ-Qm-UcZ" id="rPu-Qw-2DT"/>
                                             <outlet property="nameLabel" destination="cvc-B0-LFN" id="fdx-AN-h41"/>
                                             <segue destination="76b-gu-8hJ" kind="show" id="KQW-tG-9Su"/>
@@ -119,6 +124,15 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="nt4-qy-BQC">
+                                                <rect key="frame" x="8" y="128" width="377" height="308"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <color key="textColor" systemColor="viewFlipsideBackgroundColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.66660034167696092" green="0.66666668653488159" blue="0.6489297924174553" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </view>
@@ -154,6 +168,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="datesLabel" destination="ip7-yg-Ckf" id="tEC-Ex-6kF"/>
+                        <outlet property="descriptionTextView" destination="nt4-qy-BQC" id="B1M-Go-Vzf"/>
+                        <outlet property="favoriteButtonItem" destination="JKp-it-BYK" id="cUk-bA-KkZ"/>
                         <outlet property="logoImageView" destination="8Hb-pM-9P7" id="qTc-rN-Xzd"/>
                         <outlet property="nameLabel" destination="saA-EA-IBV" id="vQe-TR-ibE"/>
                     </connections>
@@ -182,12 +198,16 @@
         </scene>
     </scenes>
     <resources>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="suit.heart" catalog="system" width="128" height="107"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="viewFlipsideBackgroundColor">
+            <color red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

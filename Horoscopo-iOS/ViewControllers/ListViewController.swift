@@ -20,6 +20,12 @@ class ListViewController: UIViewController, UITableViewDataSource {
         
         tableView.dataSource = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return horoscopeList.count
@@ -30,9 +36,11 @@ class ListViewController: UIViewController, UITableViewDataSource {
                 
         let horoscope = horoscopeList[indexPath.row]
         
-        cell.nameLabel.text = horoscope.name
+        cell.render(horoscope: horoscope)
+        /*cell.nameLabel.text = horoscope.name
         cell.logoImageView.image = horoscope.logo
         cell.datesLabel.text = horoscope.dates
+        */
         
         return cell
     }

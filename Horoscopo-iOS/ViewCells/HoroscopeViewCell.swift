@@ -13,6 +13,8 @@ class HoroscopeViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var datesLabel: UILabel!
     
+    @IBOutlet weak var favoriteImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,6 +24,14 @@ class HoroscopeViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func render(horoscope: Horoscope){
+        nameLabel.text = horoscope.name
+        datesLabel.text = horoscope.dates
+        logoImageView.image = horoscope.logo
+        
+        favoriteImageView.isHidden = !(horoscope.id == UserDefaults.standard.string(forKey: "FAVORITE_HOROSCOPE") ?? "" )
     }
 
 }
